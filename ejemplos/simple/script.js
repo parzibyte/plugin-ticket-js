@@ -1,4 +1,4 @@
-const RUTA_API = "http://localhost:8000"
+const RUTA_API = "http://localhost:8000";
 const $estado = document.querySelector("#estado"),
     $listaDeImpresoras = document.querySelector("#listaDeImpresoras"),
     $btnLimpiarLog = document.querySelector("#btnLimpiarLog"),
@@ -72,6 +72,7 @@ $btnEstablecerImpresora.addEventListener("click", () => {
 });
 
 $btnImprimir.addEventListener("click", () => {
+    let impresora = new Impresora(RUTA_API);
     impresora.setFontSize(1, 1);
     impresora.write("Fuente 1,1\n");
     impresora.setFontSize(1, 2);
