@@ -21,10 +21,10 @@ const limpiarLista = () => {
     }
 };
 
+
 const obtenerListaDeImpresoras = () => {
-    loguear("Cargando lista...")
-    fetch(RUTA_API + "/impresoras")
-        .then(r => r.json())
+    loguear("Cargando lista...");
+    Impresora.getImpresoras()
         .then(listaDeImpresoras => {
             refrescarNombreDeImpresoraSeleccionada();
             loguear("Lista cargada");
@@ -39,24 +39,19 @@ const obtenerListaDeImpresoras = () => {
 
 const establecerImpresoraComoPredeterminada = nombreImpresora => {
     loguear("Estableciendo impresora...");
-    fetch(RUTA_API + "/impresora", {
-            method: "PUT",
-            body: JSON.stringify(nombreImpresora)
-        })
-        .then(r => r.json())
+    Impresora.setImpresora(nombreImpresora)
         .then(respuesta => {
             refrescarNombreDeImpresoraSeleccionada();
-            if (respuesta != nombreImpresora) {
-                loguear(`No se pudo establecer la impresora con el nombre ${nombreImpresora}`);
-            } else {
+            if (respuesta) {
                 loguear(`Impresora ${nombreImpresora} establecida correctamente`);
+            } else {
+                loguear(`No se pudo establecer la impresora con el nombre ${nombreImpresora}`);
             }
         });
 };
 
 const refrescarNombreDeImpresoraSeleccionada = () => {
-    fetch(RUTA_API + "/impresora")
-        .then(r => r.json())
+    Impresora.getImpresora()
         .then(nombreImpresora => {
             $impresoraSeleccionada.textContent = nombreImpresora;
         });

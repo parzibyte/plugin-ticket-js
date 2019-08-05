@@ -18,6 +18,8 @@ const C = {
     FuenteB: "B"
 };
 
+const URL_PLUGIN = "http://localhost:8000";
+
 class OperacionTicket {
     constructor(accion, datos) {
         this.accion = accion + "";
@@ -26,9 +28,31 @@ class OperacionTicket {
 }
 class Impresora {
     constructor(ruta) {
-        if (!ruta) ruta = "http://localhost:8000";
+        if (!ruta) ruta = URL_PLUGIN;
         this.ruta = ruta;
         this.operaciones = [];
+    }
+
+    static setImpresora(nombreImpresora, ruta) {
+        if (ruta) URL_PLUGIN = ruta;
+        return fetch(URL_PLUGIN + "/impresora", {
+                method: "PUT",
+                body: JSON.stringify(nombreImpresora),
+            })
+            .then(r => r.json())
+            .then(respuestaDecodificada => respuestaDecodificada === nombreImpresora);
+    }
+
+    static getImpresora(ruta) {
+        if (ruta) URL_PLUGIN = ruta;
+        return fetch(URL_PLUGIN + "/impresora")
+            .then(r => r.json());
+    }
+
+    static getImpresoras(ruta) {
+        if (ruta) URL_PLUGIN = ruta;
+        return fetch(URL_PLUGIN + "/impresoras")
+            .then(r => r.json());
     }
 
     setFontSize(a, b) {
