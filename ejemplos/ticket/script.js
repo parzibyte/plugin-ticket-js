@@ -85,6 +85,7 @@ $btnImprimir.addEventListener("click", () => {
     impresora.setAlign("center");
     impresora.write("***Gracias por su compra***");
     impresora.cut();
+    impresora.cutPartial(); // Pongo este y también cut porque en ocasiones no funciona con cut, solo con cutPartial
     impresora.end()
         .then(valor => {
             loguear("Al imprimir: " + valor);

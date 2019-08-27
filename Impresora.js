@@ -7,6 +7,7 @@
 const C = {
     AccionWrite: "write",
     AccionCut: "cut",
+    AccionCutPartial: "cutpartial",
     AccionAlign: "align",
     AccionFontSize: "fontsize",
     AccionFont: "font",
@@ -58,6 +59,10 @@ class Impresora {
 
     cut() {
         this.operaciones.push(new OperacionTicket(C.AccionCut, ""));
+    }
+
+    cutPartial() {
+        this.operaciones.push(new OperacionTicket(C.AccionCutPartial, ""));
     }
 
     setFontSize(a, b) {
