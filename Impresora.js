@@ -6,6 +6,7 @@
  */
 const C = {
     AccionWrite: "write",
+    AccionCut: "cut",
     AccionAlign: "align",
     AccionFontSize: "fontsize",
     AccionFont: "font",
@@ -53,6 +54,10 @@ class Impresora {
         if (ruta) URL_PLUGIN = ruta;
         return fetch(URL_PLUGIN + "/impresoras")
             .then(r => r.json());
+    }
+
+    cut() {
+        this.operaciones.push(new OperacionTicket(C.AccionCut, ""));
     }
 
     setFontSize(a, b) {

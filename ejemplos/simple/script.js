@@ -92,6 +92,7 @@ $btnImprimir.addEventListener("click", () => {
     impresora.write("Fuente B\n");
     impresora.feed(2);
     impresora.write("Separado por 2\n");
+    impresora.cut();
     impresora.end()
         .then(valor => {
             loguear("Al imprimir: " + valor);

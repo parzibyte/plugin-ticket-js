@@ -84,6 +84,7 @@ $btnImprimir.addEventListener("click", () => {
     impresora.write("--------------------------------\n");
     impresora.setAlign("center");
     impresora.write("***Gracias por su compra***");
+    impresora.cut();
     impresora.end()
         .then(valor => {
             loguear("Al imprimir: " + valor);
