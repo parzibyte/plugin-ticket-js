@@ -7,6 +7,7 @@
 const C = {
     AccionWrite: "write",
     AccionCut: "cut",
+    AccionCash: "cash",
     AccionCutPartial: "cutpartial",
     AccionAlign: "align",
     AccionFontSize: "fontsize",
@@ -59,6 +60,10 @@ class Impresora {
 
     cut() {
         this.operaciones.push(new OperacionTicket(C.AccionCut, ""));
+    }
+
+    cash() {
+        this.operaciones.push(new OperacionTicket(C.AccionCash, ""));
     }
 
     cutPartial() {
