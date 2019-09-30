@@ -1,83 +1,133 @@
 <!doctype html>
 <html lang="es">
-<!--
+    <!--
   Plantilla inicial de Bootstrap 4
   @author parzibyte
   Visita: parzibyte.me/blog
 -->
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,
             shrink-to-fit=no">
-    <meta name="description" content="Imprimir ticket desde JavaScript sin confirmación ni restricciones de navegadores">
-    <meta name="author" content="Parzibyte">
-    <title>Imprimir ticket desde JavaScript sin confirmación</title>
-    <!-- Cargar el CSS de Boostrap-->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
+        <meta name="description" content="Imprimir ticket desde JavaScript sin
+            confirmación ni restricciones de navegadores">
+        <meta name="author" content="Parzibyte">
+        <title>Imprimir ticket desde JavaScript sin confirmación</title>
+        <!-- Cargar el CSS de Boostrap-->
+        <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+    </head>
 
-<body>
-    <main role="main" class="container-fluid">
-        <div class="row">
-            <div class="col-12">
-                <h1>Imprimir ticket desde JavaScript sin pedir confirmación</h1>
-                <a href="//parzibyte.me/blog">By Parzibyte</a>
-                <div class="alert alert-success">
-                    Al fin un plugin gratuito que imprime usando JavaScript sin pedir confirmación ni nombre de la impresora
+    <body>
+        <main role="main" class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Imprimir ticket desde JavaScript sin pedir confirmación</h1>
+                    <a href="//parzibyte.me/blog">By Parzibyte</a>
+                    <div class="alert alert-success">
+                        Al fin un plugin gratuito que imprime usando JavaScript
+                        sin pedir confirmación ni nombre de la impresora
+                    </div>
                 </div>
-            </div>
-            <div class="col-12">
-                <h1>Modo de uso</h1>
-                <ol>
-                    <li>Configura tu impresora térmica, instala sus drivers (ya sean genéricos o no)</li>
-                    <li>Imprime una página de impresión desde el panel de control, es decir, comprueba que tu impresora funciona antes de continuar</li>
-                    <li>
-                        Haz que tu impresora esté compartida. Mira <a href="https://parzibyte.me/blog/2017/12/11/instalar-impresora-termica-generica/">este</a> tutorial
-                    </li>
-                    <li><a href="https://github.com/parzibyte/plugin-ticket-js/releases/latest">Descarga el plugin</a> (ejecutable) y ábrelo; <strong>no</strong> lo cierres
-                    </li>
-                    <li><strong>Opcional: </strong>Ahora puedes ir a los ejemplos, no es necesario escribir código para probar</li>
-                    <li>En tu proyecto, incluye el archivo <a href="Impresora.js">Impresora.js</a></li>
-                    <li>Ahora tienes la clase Impresora. Puedes crear una instancia de la misma</li>
-                </ol>
-            </div>
-            <div class="col-12">
-                <h1>Ejemplos</h1>
-                <ol>
-                    <li>
-                        <a href="./ejemplos/simple/index.html">Demostrar
+                <div class="col-12">
+                    <h1>Modo de uso</h1>
+                    <ol>
+                        <li>Configura tu impresora térmica, instala sus drivers
+                            (ya sean genéricos o no)</li>
+                        <li>Imprime una página de impresión desde el panel de
+                            control, es decir, comprueba que tu impresora
+                            funciona antes de continuar</li>
+                        <li>
+                            Haz que tu impresora esté compartida. Mira <a
+                                href="https://parzibyte.me/blog/2017/12/11/instalar-impresora-termica-generica/">este</a>
+                            tutorial
+                        </li>
+                        <li><a
+                                href="https://github.com/parzibyte/plugin-ticket-js/releases/latest">Descarga
+                                el plugin</a> (ejecutable) y ábrelo; <strong>no</strong>
+                            lo cierres
+                        </li>
+                        <li><strong>Opcional: </strong>Ahora puedes ir a los
+                            ejemplos, no es necesario escribir código para
+                            probar</li>
+                        <li>En tu proyecto, incluye el archivo <a
+                                href="Impresora.js">Impresora.js</a></li>
+                        <li>Ahora tienes la clase Impresora. Puedes crear una
+                            instancia de la misma</li>
+                    </ol>
+                </div>
+                <div class="col-12">
+                    <h1>Ejemplos</h1>
+                    <ol>
+                        <li>
+                            <a href="./ejemplos/simple/index.html">Demostrar
                                 capacidades del plugin</a>
-                    </li>
-                    <li>
-                        <a href="./ejemplos/ticket/index.html">Ticket de
+                        </li>
+                        <li>
+                            <a href="./ejemplos/ticket/index.html">Ticket de
                                 venta</a>
-                    </li>
+                        </li>
 
-                </ol>
-            </div>
-            <div class="col-12">
-                <h1>API REST</h1>
-                <div class="alert alert-info">
-
-                    <p>El plugin inicia un servidor web en el puerto 8080
-                        <br> Recuerda que eres libre de analizar el archivo <a href="Impresora.js">Impresora.js</a> y los ejemplos para ver cómo se realiza esta comunicación
-                    </p>
+                    </ol>
                 </div>
-                <h2>GET /impresoras</h2>
-                <p>Obtiene la lista de impresoras disponibles</p>
-                <h2>GET /impresora</h2>
-                <p>Obtiene la impresora predeterminada. Regresa una cadena vacía si no hay impresora configurada</p>
-                <h2>POST /imprimir</h2>
-                <p>Imprime en la impresora predeterminada. Recibe un arreglo de objetos (codificado como JSON) que deben tener la propiedad "accion" y "datos"</p>
+                <div class="col-12">
+                    <h1>API REST</h1>
+                    <div class="alert alert-info">
 
-                <h2>PUT /impresora</h2>
-                <p>Establece una impresora como predeterminada. Recibe una cadena codificada como JSON, indicando el nombre de la impresora (preferentemente obtenida de la lista). Si es correcto, se imprime un ticket de prueba y la impresora se convierte
-                    en predeterminada, si no, se indica y no se imprime ticket</p>
+                        <p>El plugin inicia un servidor web en el puerto 8080
+                            <br> Recuerda que eres libre de analizar el archivo
+                            <a href="Impresora.js">Impresora.js</a> y los
+                            ejemplos para ver cómo se realiza esta comunicación
+                        </p>
+                    </div>
+                    <h2>GET /impresoras</h2>
+                    <p>Obtiene la lista de impresoras disponibles</p>
+                    <h2>GET /impresora</h2>
+                    <p>Obtiene la impresora predeterminada. Regresa una cadena
+                        vacía si no hay impresora configurada</p>
+                    <h2>POST /imprimir</h2>
+                    <p>Imprime en la impresora predeterminada. Recibe un arreglo
+                        de objetos (codificado como JSON) que deben tener la
+                        propiedad "accion" y "datos"</p>
+
+                    <h2>PUT /impresora</h2>
+                    <p>Establece una impresora como predeterminada. Recibe una
+                        cadena codificada como JSON, indicando el nombre de la
+                        impresora (preferentemente obtenida de la lista). Si es
+                        correcto, se imprime un ticket de prueba y la impresora
+                        se convierte
+                        en predeterminada, si no, se indica y no se imprime
+                        ticket</p>
+                </div>
+                <div id="faq" class="col-12">
+                    <h1>FAQ</h1>
+                    <p>Aquí detallo algunas preguntas frecuentes y errores</p>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Problema</th>
+                                <th>Explicación</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Error en el servidor: sql: no rows in result
+                                    set</td>
+                                <td>No se ha establecido la impresora, ya sea
+                                    porque no se a realizado la acción o porque
+                                    no hay impresoras válidas, recuerda que si
+                                    quieres imprimir primero debes establecer la
+                                    impresora, y luego imprimir</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
             </div>
-
-        </div>
-    </main>
-</body>
+        </main>
+    </body>
 
 </html>
