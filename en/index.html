@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+        <meta name="description" content="Print in thermal printer directly from
+            browser">
+        <meta name="author" content="Parzibyte">
+        <title>A plugin to print in thermal printers directly from browser | By
+            Parzibyte</title>
+        <!-- Cargar el CSS de Boostrap-->
+        <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+    </head>
+
+    <body>
+        <main role="main" class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Print a ticket/receipt without browser dialog</h1>
+                    <a href="../">Español</a> | <a href="./">English</a> |<a href="//parzibyte.me/blog">By Parzibyte</a>
+                    <div class="alert alert-success">
+                        Finally a free plugin to send a ticket to thermal
+                        printer by using only JavaScript. Compatible with all
+                        modern browsers
+                    </div>
+                </div>
+                <div class="col-12">
+                    <h1>How to use</h1>
+                    <ol>
+                        <li>Set up your thermal printer; you can install it as a
+                            generic printer or with its drivers</li>
+                        <li>Print a test from the control panel, i.e. check if
+                            your printer is working</li>
+                        <li>
+                            Share your printer. <a
+                                href="https://parzibyte.me/blog/2017/12/11/instalar-impresora-termica-generica/">Look
+                                at this post</a>
+                        </li>
+                        <li><a
+                                href="https://github.com/parzibyte/plugin-ticket-js/releases/latest">Download
+                                the free plugin (it's the exe file)</a> open it
+                            and <strong>DO NOT</strong>
+                            close it
+                        </li>
+                        <li><strong>Optionally: </strong>Now you can go to the
+                            examples</li>
+                        <li>In your project, include the<a
+                                href="../Impresora.js">Impresora.js</a> script</li>
+                        <li>Now you have the <code>Impresora</code> class; you
+                            can create a new instance</li>
+                    </ol>
+                </div>
+                <div class="col-12">
+                    <h1>Limitations</h1>
+                    <ul>
+                        <li>The plugin does not work in printers connected
+                            through the network, the plugin must be in the
+                            computer where the thermal printer is physically
+                            connected </li>
+                    </ul>
+                </div>
+                <div class="col-12">
+                    <h1>Examples</h1>
+                    <ol>
+                        <li>
+                            <a href="./examples/simple/index.html">Show plugin
+                                capabilities</a>
+                        </li>
+                        <li>
+                            <a href="./examples/ticket/index.html">Sale receipt</a>
+                        </li>
+
+                    </ol>
+                </div>
+                <div class="col-12">
+                    <h1>API REST</h1>
+                    <div class="alert alert-info">
+
+                        <p>The plugin starts a web server in the port 8080
+                            <br> Feel free to check the source code of
+                            <a href="../Impresora.js">Impresora.js</a> and the
+                            examples to see how to use the class
+                        </p>
+                    </div>
+                    <h2>GET /impresoras</h2>
+                    <p>Get available printers</p>
+                    <h2>GET /impresora</h2>
+                    <p>Get selected thermal printer. It returns a empty string
+                        if none.</p>
+                    <h2>POST /imprimir</h2>
+                    <p>Print a document in the default printer. You must send an
+                        array of objects (encoded as JSON) with "accion" and
+                        "datos" keys; again, check the source code for more info</p>
+                    <h2>PUT /impresora</h2>
+                    <p>Set a printer. You must send a string encoded with JSON
+                        with the printer name (you can get it from GET
+                        /impresoras).
+                        If the printer is a thermal printer and everything is
+                        fine, a receipt will be printed. If not, please check
+                        your settings.</p>
+                </div>
+                <div id="faq" class="col-12">
+                    <h1>FAQ</h1>
+                    <p>Some faqs and issues</p>
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Issue</th>
+                                <th>Explanation</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Error en el servidor: sql: no rows in result
+                                    set</td>
+                                <td>The printer has not been set, either because
+                                    the action has not been performed or because
+                                    there are no valid printers, remember that
+                                    if you want to print ,first you must set the
+                                    printer, and then try to print</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </body>
+
+</html>
