@@ -108,5 +108,17 @@ class Impresora {
             .then(r => r.json());
     }
 
+    imprimirEnImpresora(nombreImpresora) {
+        const payload = {
+            operaciones: this.operaciones,
+            impresora: nombreImpresora,
+        };
+        return fetch(this.ruta + "/imprimir_en", {
+                method: "POST",
+                body: JSON.stringify(payload),
+            })
+            .then(r => r.json());
+    }
+
 
 }
