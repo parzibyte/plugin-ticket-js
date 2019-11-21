@@ -14,6 +14,7 @@ const C = {
     AccionFont: "font",
     AccionEmphasize: "emphasize",
     AccionFeed: "feed",
+    AccionQr: "qr",
     AlineacionCentro: "center",
     AlineacionDerecha: "right",
     AlineacionIzquierda: "left",
@@ -120,5 +121,8 @@ class Impresora {
             .then(r => r.json());
     }
 
+    qr(contenido) {
+        this.operaciones.push(new OperacionTicket(C.AccionQr, contenido));
+    }
 
 }
