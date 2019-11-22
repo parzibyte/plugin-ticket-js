@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+    <meta name="description" content="Demostrar capacidades de plugin de
+            impresión para impresora térmica en JavaScript">
+    <meta name="author" content="Parzibyte">
+    <title>Imprimir códigos QR en impresora térmica</title>
+    <!-- Cargar el CSS de Boostrap-->
+    <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+</head>
+<body>
+<main role="main" class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <h1>Códigos QR en thermal printer</h1>
+            <p>En este ejemplo se muestra cómo imprimir un código QR en una ticketera</p>
+            <a href="//parzibyte.me/blog">By Parzibyte</a>
+            <br>
+            <a class="mb-2 btn btn-danger btn-sm"
+               href="../../index.html">Documentación</a>
+            <div class="alert alert-danger">Recuerda que el plugin debe estar ejecutándose en segundo plano</div>
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <div class="form-group">
+                <label for="listaDeImpresoras">Selecciona tu impresora</label>
+                <select class="form-control" id="listaDeImpresoras"></select>
+            </div>
+            <div class="form-group">
+                <label for="codigo">Contenido del código QR</label>
+                <textarea placeholder="Escribe el contenido del código QR" id="codigo" cols="30"
+                          rows="5" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-success" id="btnImprimir">Imprimir
+                    en impresora seleccionada
+                </button>
+            </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <h2>Log</h2>
+            <button class="btn btn-warning btn-sm" id="btnLimpiarLog">Limpiar
+                log
+            </button>
+            <pre id="estado"></pre>
+        </div>
+    </div>
+</main>
+<script src="../../Impresora.js"></script>
+<script src="./script.js"></script>
+</body>
+</html>
