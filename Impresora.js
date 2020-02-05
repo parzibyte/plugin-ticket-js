@@ -19,7 +19,14 @@ const C = {
     AlineacionDerecha: "right",
     AlineacionIzquierda: "left",
     FuenteA: "A",
-    FuenteB: "B"
+    FuenteB: "B",
+    AccionBarcode: "barcode",
+    Medida80: 80,
+    Medida100: 100,
+    Medida156: 156,
+    Medida200: 200,
+    Medida300: 300,
+    Medida350: 350,
 };
 
 const URL_PLUGIN = "http://localhost:8000";
@@ -123,6 +130,20 @@ class Impresora {
 
     qr(contenido) {
         this.operaciones.push(new OperacionTicket(C.AccionQr, contenido));
+    }
+
+    barcode(contenido, medida) {
+        medida = parseInt(medida);
+        if (medida !== C.Medida80 &&
+            medida !== C.Medida100 &&
+            medida !== C.Medida156 &&
+            medida !== C.Medida200 &&
+            medida !== C.Medida300 &&
+            medida !== C.Medida350) {
+            throw Error("Valor para medida del barcode inválido");
+        }
+        let payload = contenido.concat(",").concat(medida.toString());
+        this.operaciones.push(new OperacionTicket(C.AccionBarcode, payload));
     }
 
 }
