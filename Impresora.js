@@ -24,7 +24,8 @@ const C = {
     AccionBarcode39: "barcode39",
     AccionBarcode93: "barcode93",
     AccionBarcodeEAN: "barcodeEAN",
-    AccionBarcodeTwoOfFive: "barcodeTwoOfFive",
+    AccionBarcodeTwoOfFiveSinInterleaved: "barcodeTwoOfFive",
+    AccionBarcodeTwoOfFiveInterleaved: "barcodeTwoOfFiveInterleaved",
     AccionBarcodeCodabar: "barcodeCodabar",
     AccionBarcodeUPCA: "barcodeUPCA",
     AccionBarcodeUPCE: "barcodeUPCE",
@@ -157,10 +158,11 @@ class Impresora {
                 C.AccionBarcode39,
                 C.AccionBarcode93,
                 C.AccionBarcodeEAN,
-                C.AccionBarcodeTwoOfFive,
+                C.AccionBarcodeTwoOfFiveInterleaved,
+                C.AccionBarcodeTwoOfFiveSinInterleaved,
                 C.AccionBarcodeCodabar,
                 C.AccionBarcodeUPCA,
-                C.AccionBarcodeUPCE
+                C.AccionBarcodeUPCE,
             ]
             .indexOf(tipo) === -1
         ) throw Error("Tipo de código de barras no soportado");
