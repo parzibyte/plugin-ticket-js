@@ -3,7 +3,8 @@ const $estado = document.querySelector("#estado"),
     $codigo = document.querySelector("#codigo"),
     $btnLimpiarLog = document.querySelector("#btnLimpiarLog"),
     $btnImprimir = document.querySelector("#btnImprimir"),
-    $tamanioBarcode = document.querySelector("#tamanioBarcode");
+    $tamanioBarcode = document.querySelector("#tamanioBarcode"),
+    $tipoBarcode = document.querySelector("#tipoBarcode");
 const loguear = texto => $estado.textContent += (new Date()).toLocaleString() + " " + texto + "\n";
 const limpiarLog = () => $estado.textContent = "";
 
@@ -47,9 +48,14 @@ $btnImprimir.addEventListener("click", () => {
     if (!tamanioBarcode) {
         return alert("Selecciona el tamaño");
     }
+    // El tipo..
+    let tipoBarcode = $tipoBarcode.options[$tipoBarcode.selectedIndex].value;
+    if (!tipoBarcode) {
+        return alert("Selecciona el tipo");
+    }
     // Si está bien se ejecuta esto...
     let impresora = new Impresora();
-    impresora.barcode(contenido, tamanioBarcode);
+    impresora.barcode(contenido, tamanioBarcode, tipoBarcode);
     // Dos saltos de línea
     impresora.feed(2);
     // Terminar en la impresora seleccionada

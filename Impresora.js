@@ -20,7 +20,12 @@ const C = {
     AlineacionIzquierda: "left",
     FuenteA: "A",
     FuenteB: "B",
-    AccionBarcode: "barcode",
+    AccionBarcode128: "barcode128",
+    AccionBarcode39: "barcode39",
+    AccionBarcode93: "barcode93",
+    AccionBarcodeEAN: "barcodeEAN",
+    AccionBarcodeTwoOfFive: "barcodeTwoOfFive",
+    AccionBarcodeCodabar: "barcodeCodabar",
     Medida80: 80,
     Medida100: 100,
     Medida156: 156,
@@ -132,7 +137,7 @@ class Impresora {
         this.operaciones.push(new OperacionTicket(C.AccionQr, contenido));
     }
 
-    barcode(contenido, medida) {
+    validarMedida(medida) {
         medida = parseInt(medida);
         if (medida !== C.Medida80 &&
             medida !== C.Medida100 &&
@@ -142,8 +147,26 @@ class Impresora {
             medida !== C.Medida350) {
             throw Error("Valor para medida del barcode inválido");
         }
+    }
+
+    validarTipo(tipo) {
+        if (
+            [C.AccionBarcode128,
+                C.AccionBarcode39,
+                C.AccionBarcode93,
+                C.AccionBarcodeEAN,
+                C.AccionBarcodeTwoOfFive,
+                C.AccionBarcodeCodabar
+            ]
+            .indexOf(tipo) === -1
+        ) throw Error("Tipo de código de barras no soportado");
+    }
+
+    barcode(contenido, medida, tipo) {
+        this.validarMedida(medida);
+        this.validarTipo(tipo);
         let payload = contenido.concat(",").concat(medida.toString());
-        this.operaciones.push(new OperacionTicket(C.AccionBarcode, payload));
+        this.operaciones.push(new OperacionTicket(tipo, payload));
     }
 
 }
