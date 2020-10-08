@@ -74,6 +74,11 @@ class Impresora {
             .then(r => r.json());
     }
 
+    static getImpresorasRemotas(ip) {
+        return fetch(URL_PLUGIN + "/impresoras_remotas?ip=" + ip)
+            .then(r => r.json());
+    }
+
     cut() {
         this.operaciones.push(new OperacionTicket(C.AccionCut, ""));
     }
@@ -173,6 +178,18 @@ class Impresora {
         this.validarTipo(tipo);
         let payload = contenido.concat(",").concat(medida.toString());
         this.operaciones.push(new OperacionTicket(tipo, payload));
+    }
+    imprimirEnImpresoraConNombreEIp(nombreImpresora, ip) {
+        const payload = {
+            operaciones: this.operaciones,
+            impresora: nombreImpresora,
+            ip: ip,
+        };
+        return fetch(this.ruta + "/imprimir_y_reenviar", {
+            method: "POST",
+            body: JSON.stringify(payload),
+        })
+            .then(r => r.json());
     }
 
 }
