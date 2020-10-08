@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,
+            shrink-to-fit=no">
+        <meta name="description" content="Demostrar capacidades de plugin de
+            impresión para impresora térmica en JavaScript">
+        <meta name="author" content="Parzibyte">
+        <title>Obtener impresoras remotas</title>
+        <!-- Cargar el CSS de Boostrap-->
+        <link
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+            crossorigin="anonymous">
+    </head>
+
+    <body>
+        <main role="main" class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <h1>Obtener impresoras remotas</h1>
+                    <p>A partir de la IP de otra PC que ejecuta el plugin de impresión, obtener la lista de impresoras</p>
+                    <a href="//parzibyte.me/blog">By Parzibyte</a>
+                    <br>
+                    <a class="mb-2 btn btn-danger btn-sm"
+                        href="../../index.html">Documentación</a>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="form-group">
+                        <input id="ip" type="text" class="form-control"
+                            placeholder="IP de la computadora">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-success" id="btnObtenerImpresoras">Obtener impresoras</button>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <h2>Log</h2>
+                    <button class="btn btn-warning btn-sm" id="btnLimpiarLog">Limpiar
+                        log</button>
+                    <pre id="estado"></pre>
+                </div>
+            </div>
+        </main>
+        <script src="../../Impresora.js"></script>
+        <script src="./script.js"></script>
+    </body>
+
+</html>
