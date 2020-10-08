@@ -55,9 +55,9 @@ class Impresora {
     static setImpresora(nombreImpresora, ruta) {
         if (ruta) URL_PLUGIN = ruta;
         return fetch(URL_PLUGIN + "/impresora", {
-                method: "PUT",
-                body: JSON.stringify(nombreImpresora),
-            })
+            method: "PUT",
+            body: JSON.stringify(nombreImpresora),
+        })
             .then(r => r.json())
             .then(respuestaDecodificada => respuestaDecodificada === nombreImpresora);
     }
@@ -73,6 +73,17 @@ class Impresora {
         return fetch(URL_PLUGIN + "/impresoras")
             .then(r => r.json());
     }
+
+    static getIp() {
+        return fetch(URL_PLUGIN + "/ip")
+            .then(r => r.json());
+    }
+
+    static getImpresorasRemotas(ip) {
+        return fetch(URL_PLUGIN + "/impresoras_remotas?ip=" + ip)
+            .then(r => r.json());
+    }
+
 
     cut() {
         this.operaciones.push(new OperacionTicket(C.AccionCut, ""));
@@ -118,9 +129,9 @@ class Impresora {
 
     end() {
         return fetch(this.ruta + "/imprimir", {
-                method: "POST",
-                body: JSON.stringify(this.operaciones),
-            })
+            method: "POST",
+            body: JSON.stringify(this.operaciones),
+        })
             .then(r => r.json());
     }
 
@@ -130,9 +141,21 @@ class Impresora {
             impresora: nombreImpresora,
         };
         return fetch(this.ruta + "/imprimir_en", {
-                method: "POST",
-                body: JSON.stringify(payload),
-            })
+            method: "POST",
+            body: JSON.stringify(payload),
+        })
+            .then(r => r.json());
+    }
+    imprimirEnImpresoraConNombreEIp(nombreImpresora, ip) {
+        const payload = {
+            operaciones: this.operaciones,
+            impresora: nombreImpresora,
+            ip: ip,
+        };
+        return fetch(this.ruta + "/imprimir_y_reenviar", {
+            method: "POST",
+            body: JSON.stringify(payload),
+        })
             .then(r => r.json());
     }
 
@@ -155,16 +178,16 @@ class Impresora {
     validarTipo(tipo) {
         if (
             [C.AccionBarcode128,
-                C.AccionBarcode39,
-                C.AccionBarcode93,
-                C.AccionBarcodeEAN,
-                C.AccionBarcodeTwoOfFiveInterleaved,
-                C.AccionBarcodeTwoOfFiveSinInterleaved,
-                C.AccionBarcodeCodabar,
-                C.AccionBarcodeUPCA,
-                C.AccionBarcodeUPCE,
+            C.AccionBarcode39,
+            C.AccionBarcode93,
+            C.AccionBarcodeEAN,
+            C.AccionBarcodeTwoOfFiveInterleaved,
+            C.AccionBarcodeTwoOfFiveSinInterleaved,
+            C.AccionBarcodeCodabar,
+            C.AccionBarcodeUPCA,
+            C.AccionBarcodeUPCE,
             ]
-            .indexOf(tipo) === -1
+                .indexOf(tipo) === -1
         ) throw Error("Tipo de código de barras no soportado");
     }
 
