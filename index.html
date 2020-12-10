@@ -1,237 +1,293 @@
 <!doctype html>
 <html lang="es">
-    <!--
+<!--
   Plantilla inicial de Bootstrap 4
   @author parzibyte
   Visita: parzibyte.me/blog
 -->
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1,
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1,
             shrink-to-fit=no">
-        <meta name="description" content="Imprimir ticket desde JavaScript sin
+    <meta name="description" content="Imprimir ticket desde JavaScript sin
             confirmación ni restricciones de navegadores">
-        <meta name="author" content="Parzibyte">
-        <title>Imprimir ticket desde JavaScript sin confirmación</title>
-        <!-- Cargar el CSS de Boostrap-->
-        <link
-            href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-            crossorigin="anonymous">
-    </head>
+    <meta name="author" content="Parzibyte">
+    <title>Imprimir ticket desde JavaScript sin confirmación</title>
+    <!-- Cargar el CSS de Boostrap-->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
-    <body>
-        <main role="main" class="container-fluid">
-            <div class="row">
-                <div class="col-12">
-                    <h1>Imprimir ticket desde JavaScript sin pedir confirmación</h1>
-                    <a href="./">Español</a> | <a href="./en">English</a> |<a
-                        href="//parzibyte.me/blog">By Parzibyte</a>
-                    <div class="alert alert-success">
-                        Al fin un plugin gratuito que imprime usando JavaScript
-                        sin pedir confirmación ni nombre de la impresora
-                    </div>
+<body>
+    <main role="main" class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <h1>Imprimir ticket desde JavaScript sin pedir confirmación</h1>
+                <a href="./">Español</a> | <a href="./en">English</a> |<a href="//parzibyte.me/blog">By Parzibyte</a>
+                <div class="alert alert-success">
+                    Al fin un plugin gratuito que imprime usando JavaScript
+                    sin pedir confirmación ni nombre de la impresora
                 </div>
-                <div class="col-12">
-                    <h1>Modo de uso</h1>
-                    <ol>
-                        <li>Configura tu impresora térmica, instala sus drivers
-                            (ya sean genéricos o no)</li>
-                        <li>Imprime una página de impresión desde el panel de
-                            control, es decir, comprueba que tu impresora
-                            funciona antes de continuar</li>
-                        <li>
-                            Haz que tu impresora esté compartida. Mira <a
-                                href="https://parzibyte.me/blog/2017/12/11/instalar-impresora-termica-generica/">este</a>
-                            tutorial
-                        </li>
-                        <li><a
-                                href="https://github.com/parzibyte/plugin-ticket-js/releases/latest">Descarga
-                                el plugin</a> (ejecutable) y ábrelo; <strong>se
-                                ejecutará en segundo plano</strong>
-                            (puedes cerrarlo desde el administrador de tareas)
-                        </li>
-                        <li><strong>Opcional: </strong>Ahora puedes ir a los
-                            ejemplos, no es necesario escribir código para
-                            probar</li>
-                        <li>En tu proyecto, incluye el archivo <a
-                                href="Impresora.js">Impresora.js</a></li>
-                        <li>Ahora tienes la clase Impresora. Puedes crear una
-                            instancia de la misma</li>
-                    </ol>
-                </div>
-                <div class="col-12">
-                    <h1>Limitaciones</h1>
-                    <ul>
-                        <li>No funciona con impresoras en red. El plugin debe
-                            estar en la computadora en donde la impresora está
-                            presente físicamente</li>
-                    </ul>
-                </div>
-                <div class="col-12">
-                    <h1>Ejemplos</h1>
-                    <ol>
-                        <li>
-                            <a href="./ejemplos/simple/index.html">Demostrar
-                                capacidades del plugin</a>
-                        </li>
-                        <li>
-                            <a href="./ejemplos/ticket/index.html">Ticket de
-                                venta</a>
-                        </li>
-                        <li>
-                            <a href="./ejemplos/imprimir-con-nombre/index.html">Imprimir indicando nombre de impresora</a>
-                        </li>
-                        <li>
-                            <a href="./ejemplos/qr/index.html">Códigos QR</a>
-                        </li>
-                        <li>
-                            <a href="./ejemplos/barcode/index.html">Códigos de barras</a>
-                        </li>
-                    </ol>
-                </div>
-                <div class="col-12">
-                    <h1>API REST</h1>
-                    <div class="alert alert-info">
-
-                        <p>El plugin inicia un servidor web en el puerto 8000
-                            <br> Recuerda que eres libre de analizar el archivo
-                            <a href="Impresora.js">Impresora.js</a> y los
-                            ejemplos para ver cómo se realiza esta comunicación
-                        </p>
-                    </div>
-                    <h2>GET /impresoras</h2>
-                    <p>Obtiene la lista de impresoras disponibles</p>
-                    <h2>GET /impresora</h2>
-                    <p>Obtiene la impresora predeterminada. Regresa una cadena
-                        vacía si no hay impresora configurada</p>
-                    <h2>POST /imprimir</h2>
-                    <p>Imprime en la impresora predeterminada. Recibe un arreglo
-                        de objetos (codificado como JSON) que deben tener la
-                        propiedad "accion" y "datos"</p>
-
-                    <h2>PUT /impresora</h2>
-                    <p>Establece una impresora como predeterminada. Recibe una
-                        cadena codificada como JSON, indicando el nombre de la
-                        impresora (preferentemente obtenida de la lista). Si es
-                        correcto, se imprime un ticket de prueba y la impresora
-                        se convierte
-                        en predeterminada, si no, se indica y no se imprime
-                        ticket</p>
-                </div>
-                <div id="faq" class="col-12">
-                    <h1>FAQ</h1>
-                    <p>Aquí detallo algunas preguntas frecuentes y errores</p>
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th>Pregunta / problema</th>
-                                <th>Explicación / respuesta</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Error en el servidor: sql: no rows in result
-                                    set</td>
-                                <td>No se ha establecido la impresora, ya sea
-                                    porque no se ha realizado la acción o porque
-                                    no hay impresoras válidas, recuerda que si
-                                    quieres imprimir primero debes establecer la
-                                    impresora, y luego imprimir. <br>También puedes usar el método <code>imprimirEnImpresora("nombreDeImpresoraAquí")</code></td>
-                            </tr>
-                            <tr>
-                                <td>Quiero que el plugin se ejecute al
-                                    iniciar Windows, y que no aparezca la
-                                    consola</td>
-                                <td>En la <a
-                                        href="https://github.com/parzibyte/plugin-ticket-js/releases/tag/v0.6-beta">versión
-                                        0.6</a> he desaparecido la consola,
-                                    basta con agregar el ejecutable al
-                                    startup folder. Más información <a
-                                        href="https://parzibyte.me/blog/2019/10/14/ejecutar-programa-inicio-windows/">aquí</a>.</td>
-                            </tr>
-                            <tr>
-                                <td>Quiero imprimir caracteres especiales
-                                    como áéí o la letra ñ</td>
-                                <td>Por el momento no es posible imprimir
-                                    estos caracteres especiales ni con la
-                                    versión premium</td>
-                            </tr>
-                            <tr>
-                                <td>Quiero remover el pie y el encabezado</td>
-                                <td>Consigue la versión premium</td>
-                            </tr>
-                            <tr>
-                                <td>Costo de la versión premium</td>
-                                <td>500 pesos Mexicanos (aproximadamente 26 dólares). Con la versión premium se
-                                    remueve el encabezado y pie. Obtienes
-                                    licencia para 3 dominios/subdominios, cada dominio/subdominio
-                                    adicional cuesta 40 pesos mexicanos (aproximadamente 2.5 dólares)</td>
-                            </tr>
-                            <tr>
-                                <td>Método de pago</td>
-                                <td>Aquí los puedes ver: <a
-                                        href="https://parzibyte.me/blog/pagos-venta-software/">Pagos
-                                        y venta de software</a></td>
-                            </tr>
-                            <tr>
-                                <td>Proceso de compra</td>
-                                <td>Realiza el pago en los medios listados anteriormente, después envíame un correo en mi página de contacto con los 3 dominios/subdominios que usarás</td>
-                            </tr>
-                            <tr>
-                                <td>¿Es un pago único?</td>
-                                <td>Sí</td>
-                            </tr>
-                            <tr>
-                                <td>El costo es muy elevado</td>
-                                <td>Lo siento, es una forma de cobrar por el
-                                    trabajo que realizo (el reconocimiento y
-                                    las estrellas de GitHub no pagan mis
-                                    gastos). Además, también me gusta el open
-                                    source, puedes ver los <a
-                                        href="https://parzibyte.me/blog/software-creado-por-parzibyte/">proyectos
-                                        que he
-                                        creado</a> y por los que no cobro ni un
-                                    peso</td>
-                            </tr>
-                            <tr>
-                                <td>¿Hay descuentos o promociones?</td>
-                                <td>No</td>
-                            </tr>
-                            <tr>
-                                <td>¿Al comprar la versión premium obtengo
-                                    soporte por algún tiempo?</td>
-                                <td>No, solo obtienes una licencia para usar
-                                    el plugin. El máximo soporte que puedo
-                                    dar es la documentación y los ejemplos,
-                                    lo demás es responsabilidad del
-                                    desarrollador. Sin embargo, puedes <a
-                                        href="https://parzibyte.me/blog/contrataciones-ayuda/">contratarme</a>
-                                    para que lo adapte a tu sistema</td>
-                            </tr>
-                            <tr>
-                                <td>¿Funciona en Linux y Mac?</td>
-                                <td>Sí; teóricamente, solo que no lo he
-                                    probado porque no he tenido la
-                                    necesidad, pero estoy un 99.99 % seguro
-                                    de
-                                    que sí</td>
-                            </tr>
-                            <tr>
-                                <td>Abrir el cajón de dinero</td>
-                                <td>Invoca al método <code>cash</code> dentro de tu objeto que instancia de la clase <code>Impresora</code></td>
-                            </tr>
-                            <tr>
-                                <td>Imprimir imagen o logotipo</td>
-                                <td>Por el momento no es posible</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-
             </div>
-        </main>
-    </body>
+            <div class="col-12">
+                <h1>Modo de uso</h1>
+                <ol>
+                    <li>Configura tu impresora térmica, instala sus drivers
+                        (ya sean genéricos o no)</li>
+                    <li>Imprime una página de impresión desde el panel de
+                        control, es decir, comprueba que tu impresora
+                        funciona antes de continuar</li>
+                    <li>
+                        Haz que tu impresora esté compartida. Mira <a
+                            href="https://parzibyte.me/blog/2017/12/11/instalar-impresora-termica-generica/">este</a>
+                        tutorial
+                    </li>
+                    <li><a href="https://github.com/parzibyte/plugin-ticket-js/releases/latest">Descarga
+                            el plugin</a> (ejecutable) y ábrelo; <strong>se
+                            ejecutará en segundo plano</strong>
+                        (puedes cerrarlo desde el administrador de tareas)
+                    </li>
+                    <li><strong>Opcional: </strong>Ahora puedes ir a los
+                        ejemplos, no es necesario escribir código para
+                        probar</li>
+                    <li>En tu proyecto, incluye el archivo <a href="Impresora.js">Impresora.js</a></li>
+                    <li>Ahora tienes la clase Impresora. Puedes crear una
+                        instancia de la misma</li>
+                </ol>
+            </div>
+            <div class="col-12">
+                <h1>Limitaciones</h1>
+                <ul>
+                    <li>No funciona con impresoras en red. El plugin debe
+                        estar en la computadora en donde la impresora está
+                        presente físicamente</li>
+                </ul>
+            </div>
+            <div class="col-12">
+                <h1>Ejemplos</h1>
+                <ol>
+                    <li>
+                        <a href="./ejemplos/simple/index.html">Demostrar
+                            capacidades del plugin</a>
+                    </li>
+                    <li>
+                        <a href="./ejemplos/ticket/index.html">Ticket de
+                            venta</a>
+                    </li>
+                    <li>
+                        <a href="./ejemplos/imprimir-con-nombre/index.html">Imprimir indicando nombre de impresora</a>
+                    </li>
+                    <li>
+                        <a href="./ejemplos/qr/index.html">Códigos QR</a>
+                    </li>
+                    <li>
+                        <a href="./ejemplos/barcode/index.html">Códigos de barras</a>
+                    </li>
+                </ol>
+            </div>
+            <div class="col-12">
+                <h1>API REST</h1>
+                <div class="alert alert-info">
+
+                    <p>El plugin inicia un servidor web en el puerto 8000
+                        <br> Recuerda que eres libre de analizar el archivo
+                        <a href="Impresora.js">Impresora.js</a> y los
+                        ejemplos para ver cómo se realiza esta comunicación
+                    </p>
+                </div>
+                <h2>GET /impresoras</h2>
+                <p>Obtiene la lista de impresoras disponibles</p>
+                <h2>GET /impresora</h2>
+                <p>Obtiene la impresora predeterminada. Regresa una cadena
+                    vacía si no hay impresora configurada</p>
+                <h2>POST /imprimir</h2>
+                <p>Imprime en la impresora predeterminada. Recibe un arreglo
+                    de objetos (codificado como JSON) que deben tener la
+                    propiedad "accion" y "datos"</p>
+
+                <h2>PUT /impresora</h2>
+                <p>Establece una impresora como predeterminada. Recibe una
+                    cadena codificada como JSON, indicando el nombre de la
+                    impresora (preferentemente obtenida de la lista). Si es
+                    correcto, se imprime un ticket de prueba y la impresora
+                    se convierte
+                    en predeterminada, si no, se indica y no se imprime
+                    ticket</p>
+            </div>
+            <div id="faq" class="col-12">
+                <h1>FAQ</h1>
+                <p>Aquí detallo algunas preguntas frecuentes y errores</p>
+                <h2>Sobre los dominios</h2>
+                <p>
+                    Cuando obtiene la versión premium del plugin, tiene derecho a 3 dominios o subdominios.
+                    Cada dominio o subdominio cuentan por separado, y los subdominios de un dominio no están incluidos
+                    al registrar un dominio. También se toman por separado los puertos. Así que, por ejemplo, los
+                    siguientes dominios cuentan como separados:
+                <ul>
+                    <li>ejemplo.com</li>
+                    <li>subdominio.ejemplo.com</li>
+                    <li>ejemplo.com:8080</li>
+                </ul>
+                Puede igualmente registrar a localhost, solo tome en cuenta los puertos. Pues los siguientes dominios
+                cuentan como separados
+                <ul>
+                    <li>localhost</li>
+                    <li>localhost:7000</li>
+                    <li>localhost:8080</li>
+                </ul>
+                Por poner otro ejemplo, los siguientes dominios cuentan como separados debido a que son distintos
+                puertos
+                <ul>
+                    <li>ejemplo.com</li>
+                    <li>ejemplo.com:1000</li>
+                    <li>ejemplo.com:4000</li>
+                </ul>
+                Finalmente veamos un ejemplo de 3 dominios/subdominios distintos:
+                <ul>
+                    <li>
+                        pruebas.parzibyte.me
+                    </li>
+                    <li>parzibyte.me</li>
+                    <li>parzibyte.me:8080</li>
+                </ul>
+                <br>
+                Si anteriormente ha agregado un dominio y desea cambiarlo, el cambio tiene un costo, pues no hay forma
+                de que yo elimine (de manera remota)
+                el plugin que le envié anteriormente.
+                <br>
+                <strong>Nota:</strong> también puede registrar un dominio con subdominios ilimitados. Cada dominio se
+                incluye a sí mismo y a todos los subdominios
+                del mismo. El costo es de 25 USD por cada dominio. Recuerde que igualmente puede registrar
+                <strong>Dominios o subdominios adicionales</strong> por 2.5 USD o 40 MXN
+                </p>
+                <h2>Preguntas y respuestas</h2>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Pregunta / problema</th>
+                            <th>Explicación / respuesta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Error en el servidor: sql: no rows in result
+                                set</td>
+                            <td>No se ha establecido la impresora, ya sea
+                                porque no se ha realizado la acción o porque
+                                no hay impresoras válidas, recuerda que si
+                                quieres imprimir primero debes establecer la
+                                impresora, y luego imprimir. <br>También puedes usar el método
+                                <code>imprimirEnImpresora("nombreDeImpresoraAquí")</code></td>
+                        </tr>
+                        <tr>
+                            <td>Quiero que el plugin se ejecute al
+                                iniciar Windows, y que no aparezca la
+                                consola</td>
+                            <td>En la <a
+                                    href="https://github.com/parzibyte/plugin-ticket-js/releases/tag/v0.6-beta">versión
+                                    0.6</a> he desaparecido la consola,
+                                basta con agregar el ejecutable al
+                                startup folder. Más información <a
+                                    href="https://parzibyte.me/blog/2019/10/14/ejecutar-programa-inicio-windows/">aquí</a>.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Quiero imprimir caracteres especiales
+                                como áéí o la letra ñ</td>
+                            <td>Por el momento no es posible imprimir
+                                estos caracteres especiales ni con la
+                                versión premium</td>
+                        </tr>
+                        <tr>
+                            <td>Quiero remover el pie y el encabezado</td>
+                            <td>Consigue la versión premium</td>
+                        </tr>
+                        <tr>
+                            <td>Costo de la versión premium</td>
+                            <td>500 pesos Mexicanos (aproximadamente 26 dólares). Con la versión premium se
+                                remueve el encabezado y pie. Obtienes
+                                licencia para 3 dominios/subdominios, cada dominio/subdominio
+                                adicional cuesta 40 pesos mexicanos (aproximadamente 2.5 dólares)</td>
+                        </tr>
+                        <tr>
+                            <td>Método de pago</td>
+                            <td>Aquí los puedes ver: <a href="https://parzibyte.me/blog/pagos-venta-software/">Pagos
+                                    y venta de software</a></td>
+                        </tr>
+                        <tr>
+                            <td>Proceso de compra</td>
+                            <td>Realiza el pago en los medios listados anteriormente, después envíame un correo en mi
+                                página de contacto con los 3 dominios/subdominios que usarás</td>
+                        </tr>
+                        <tr>
+                            <td>¿Es un pago único?</td>
+                            <td>Sí</td>
+                        </tr>
+                        <tr>
+                            <td>El costo es muy elevado</td>
+                            <td>Lo siento, es una forma de cobrar por el
+                                trabajo que realizo (el reconocimiento y
+                                las estrellas de GitHub no pagan mis
+                                gastos). Además, también me gusta el open
+                                source, puedes ver los <a
+                                    href="https://parzibyte.me/blog/software-creado-por-parzibyte/">proyectos
+                                    que he
+                                    creado</a> y por los que no cobro ni un
+                                peso</td>
+                        </tr>
+                        <tr>
+                            <td>¿Hay descuentos o promociones?</td>
+                            <td>No</td>
+                        </tr>
+                        <tr>
+                            <td>¿Al comprar la versión premium obtengo
+                                soporte por algún tiempo?</td>
+                            <td>No, solo obtienes una licencia para usar
+                                el plugin. El máximo soporte que puedo
+                                dar es la documentación y los ejemplos,
+                                lo demás es responsabilidad del
+                                desarrollador. Sin embargo, puedes <a
+                                    href="https://parzibyte.me/blog/contrataciones-ayuda/">contratarme</a>
+                                para que lo adapte a tu sistema</td>
+                        </tr>
+                        <tr>
+                            <td>¿Funciona en Linux y Mac?</td>
+                            <td>Sí; teóricamente, solo que no lo he
+                                probado porque no he tenido la
+                                necesidad, pero estoy un 99.99 % seguro
+                                de
+                                que sí</td>
+                        </tr>
+                        <tr>
+                            <td>Abrir el cajón de dinero</td>
+                            <td>Invoca al método <code>cash</code> dentro de tu objeto que instancia de la clase
+                                <code>Impresora</code></td>
+                        </tr>
+                        <tr>
+                            <td>Imprimir imagen o logotipo</td>
+                            <td>Por el momento no es posible</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div id="proceso_compra" class="col-12">
+                <h1>Proceso de compra</h1>
+                <ol>
+                    <li>Realice el pago en <a href="https://paypal.me/LuisCabreraBenito">Paypal</a>. Puede hacerlo por
+                        500 MXN o por 25 USD</li>
+                    <li>Envíeme un <a href="https://parzibyte.me#contacto">correo o mensaje</a> indicando el correo
+                        desde donde realizó el pago e indíqueme los
+                        dominios en donde usará el plugin. Si no cuenta con la lista de los 3 dominios, no importa,
+                        puede comenzar con uno o dos, y agregar el resto más tarde</li>
+                    <li>Yo confirmaré el pago y le enviaré el plugin lo más pronto posible</li>
+                </ol>
+                <strong>Por favor, lea bien y responda sus dudas antes de proceder al pago, pues no hago
+                    reembolsos</strong>
+            </div>
+
+        </div>
+    </main>
+</body>
 
 </html>
