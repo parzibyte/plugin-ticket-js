@@ -61,6 +61,16 @@ class Impresora {
             .then(r => r.json())
             .then(respuestaDecodificada => respuestaDecodificada === nombreImpresora);
     }
+    static setImpresoraSilencioso(nombreImpresora, ruta) {
+        if (ruta) URL_PLUGIN = ruta;
+        return fetch(URL_PLUGIN + "/impresora_silencioso", {
+                method: "PUT",
+                body: JSON.stringify(nombreImpresora),
+            })
+            .then(r => r.json())
+            .then(respuestaDecodificada => respuestaDecodificada === nombreImpresora);
+        }
+    
 
     static getImpresora(ruta) {
         if (ruta) URL_PLUGIN = ruta;
