@@ -19,6 +19,4 @@ Ejemplos explicados [aquí](https://parzibyte.me/blog/2019/08/01/imprimir-ticket
  7. No requiere dependencias, descarga el plugin y listo
 
 ## Documentación y ejemplos
-Mira la documentación y los ejemplos [aquí](https://parzibyte.github.io/plugin-ticket-js/).
-
-Tutorial en camino...
+Mira la documentación y los ejemplos [aquí](https://parzibyte.me/plugin-impresora-termica-v1/).
